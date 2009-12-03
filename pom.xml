@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+  <!-- ====================================================================== -->
+  <!--                                                                        -->
+  <!--  JBoss, the OpenSource J2EE webOS                                      -->
+  <!--                                                                        -->
+  <!--  Distributable under LGPL license.                                     -->
+  <!--  See terms of license at http://www.gnu.org.                           -->
+  <!--                                                                        -->
+  <!-- ====================================================================== -->
+
+  <!-- $Id$ -->
+  
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <name>JBossOSGi Bundles - WebApp Support</name>
+  <description>The JBossOSGi WebApp Support</description>
+
+  <groupId>org.jboss.osgi.bundles</groupId>
+  <artifactId>jboss-osgi-webapp</artifactId>
+  <packaging>bundle</packaging>
+
+  <version>0.7.2</version>
+  
+  <!-- Parent -->
+  <parent>
+    <groupId>org.jboss.osgi</groupId>
+    <artifactId>jboss-osgi-parent</artifactId>
+    <version>1.0.4</version>
+  </parent>
+  
+  <!-- Subversion -->
+  <scm>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/jbossas/projects/jboss-osgi/projects/bundles/webapp/tags/jboss-osgi-webapp-0.7.2</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/jbossas/projects/jboss-osgi/projects/bundles/webapp/tags/jboss-osgi-webapp-0.7.2</developerConnection>
+    <url>http://fisheye.jboss.com/qsearch/JBossOSGi/tags/jboss-osgi-webapp-0.7.2</url>
+  </scm>
+  
+  <!-- Properties -->
+  <properties>
+    <version.jboss.osgi.deployment>1.0.0</version.jboss.osgi.deployment>
+    <version.ops4j.pax.web>0.7.2</version.ops4j.pax.web>
+    <version.osgi>4.2.0</version.osgi>
+  </properties>
+  
+  <!-- Dependencies -->
+  <dependencies>
+    <dependency>
+      <groupId>org.jboss.osgi.runtime</groupId>
+      <artifactId>jboss-osgi-deployment</artifactId>
+      <version>${version.jboss.osgi.deployment}</version>
+    </dependency>
+    
+    <!-- PAX-Web -->
+    <dependency>
+      <groupId>org.ops4j.pax.web</groupId>
+      <artifactId>pax-web-api</artifactId>
+      <version>${version.ops4j.pax.web}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.ops4j.pax.web</groupId>
+      <artifactId>pax-web-extender-war</artifactId>
+      <version>${version.ops4j.pax.web}</version>
+    </dependency>
+  
+    <!-- OSGi Dependencies -->
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.core</artifactId>
+      <version>${version.osgi}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.compendium</artifactId>
+      <version>${version.osgi}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <configuration>
+          <instructions>
+            <Bundle-SymbolicName>${artifactId}</Bundle-SymbolicName>
+            <Bundle-Activator>org.jboss.osgi.webapp.internal.WebAppActivator</Bundle-Activator>
+            <Export-Package>
+              org.jboss.osgi.webapp;version=${version}
+            </Export-Package>
+            <Private-Package>
+              org.jboss.osgi.webapp.internal,
+              org.ops4j.pax.web.extender.war.internal,
+            </Private-Package>
+            <Import-Package>
+               javax.servlet, 
+               javax.servlet.http, 
+               javax.xml.parsers, 
+               org.apache.commons.logging;version=1.1,
+               org.jboss.osgi.deployment.interceptor;version=1.0,
+               org.jboss.osgi.spi.capability;version=1.0,
+               org.jboss.virtual,
+               org.ops4j.pax.web.service,
+               org.osgi.service.http, 
+               org.osgi.framework,
+               org.osgi.util.tracker,
+               org.slf4j;version=1.5,
+               org.w3c.dom, 
+               org.xml.sax,
+            </Import-Package>
+            <Embed-Transitive>true</Embed-Transitive>
+            <Embed-Dependency>
+              pax-web-api;inline=false,
+              pax-web-extender-war;inline=false,
+            </Embed-Dependency>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <!-- Repositories -->
+  <repositories>
+    <repository>
+      <id>ops4j.snapshots</id>
+      <name>The OPS4J Snapshot Repository</name>
+      <url>http://repository.ops4j.org/mvn-snapshots/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+  
+</project>
