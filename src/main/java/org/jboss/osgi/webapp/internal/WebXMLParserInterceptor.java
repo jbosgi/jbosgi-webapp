@@ -25,6 +25,7 @@ package org.jboss.osgi.webapp.internal;
 
 import java.io.IOException;
 
+import org.jboss.logging.Logger;
 import org.jboss.osgi.deployment.interceptor.AbstractLifecycleInterceptor;
 import org.jboss.osgi.deployment.interceptor.InvocationContext;
 import org.jboss.osgi.deployment.interceptor.LifecycleInterceptor;
@@ -33,8 +34,6 @@ import org.jboss.virtual.VirtualFile;
 import org.ops4j.pax.web.extender.war.internal.model.WebApp;
 import org.ops4j.pax.web.extender.war.internal.parser.dom.DOMWebXmlParser;
 import org.osgi.framework.Bundle;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * The WebApp lifecycle interceptor.
@@ -45,7 +44,7 @@ import org.slf4j.LoggerFactory;
 public class WebXMLParserInterceptor extends AbstractLifecycleInterceptor implements LifecycleInterceptor
 {
    // Provide logging
-   private Logger log = LoggerFactory.getLogger(WebXMLParserInterceptor.class);
+   private static final Logger log = Logger.getLogger(WebXMLParserInterceptor.class);
    
    public WebXMLParserInterceptor()
    {

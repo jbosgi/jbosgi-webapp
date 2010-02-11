@@ -23,6 +23,7 @@ package org.jboss.osgi.webapp.internal;
 
 //$Id$
 
+import org.jboss.logging.Logger;
 import org.jboss.osgi.deployment.interceptor.AbstractLifecycleInterceptor;
 import org.jboss.osgi.deployment.interceptor.InvocationContext;
 import org.jboss.osgi.deployment.interceptor.LifecycleInterceptor;
@@ -30,8 +31,6 @@ import org.jboss.osgi.deployment.interceptor.LifecycleInterceptorException;
 import org.ops4j.pax.web.extender.war.internal.WebAppPublisherExt;
 import org.ops4j.pax.web.extender.war.internal.model.WebApp;
 import org.osgi.framework.Bundle;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * The WebApp lifecycle interceptor.
@@ -42,7 +41,7 @@ import org.slf4j.LoggerFactory;
 public class WebAppPublisherInterceptor extends AbstractLifecycleInterceptor implements LifecycleInterceptor
 {
    // Provide logging
-   private Logger log = LoggerFactory.getLogger(WebAppPublisherInterceptor.class);
+   private static final Logger log = Logger.getLogger(WebAppPublisherInterceptor.class);
    
    private WebAppPublisherExt publisher;
 
