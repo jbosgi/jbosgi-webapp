@@ -30,7 +30,7 @@ import org.jboss.osgi.deployment.interceptor.AbstractLifecycleInterceptor;
 import org.jboss.osgi.deployment.interceptor.InvocationContext;
 import org.jboss.osgi.deployment.interceptor.LifecycleInterceptor;
 import org.jboss.osgi.deployment.interceptor.LifecycleInterceptorException;
-import org.jboss.virtual.VirtualFile;
+import org.jboss.osgi.vfs.VirtualFile;
 import org.ops4j.pax.web.extender.war.internal.model.WebApp;
 import org.ops4j.pax.web.extender.war.internal.parser.dom.DOMWebXmlParser;
 import org.osgi.framework.Bundle;
