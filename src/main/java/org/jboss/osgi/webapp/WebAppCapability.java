@@ -25,6 +25,7 @@ package org.jboss.osgi.webapp;
 
 import org.jboss.osgi.spi.capability.Capability;
 import org.jboss.osgi.spi.capability.HttpServiceCapability;
+import org.jboss.osgi.testing.OSGiRuntime;
 
 /**
  * Adds the WebApp (WAR) capability to the {@link OSGiRuntime}
