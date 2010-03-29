@@ -21,25 +21,25 @@
   <artifactId>jboss-osgi-webapp</artifactId>
   <packaging>bundle</packaging>
 
-  <version>0.7.2.SP2-SNAPSHOT</version>
+  <version>0.7.2.SP2</version>
   
   <!-- Parent -->
   <parent>
     <groupId>org.jboss.osgi</groupId>
     <artifactId>jboss-osgi-parent</artifactId>
-    <version>1.0.5-SNAPSHOT</version>
+    <version>1.0.5</version>
   </parent>
   
   <!-- Subversion -->
   <scm>
-    <connection>scm:svn:http://anonsvn.jboss.org/repos/jbossas/projects/jboss-osgi/projects/bundles/webapp/trunk</connection>
-    <developerConnection>scm:svn:https://svn.jboss.org/repos/jbossas/projects/jboss-osgi/projects/bundles/webapp/trunk</developerConnection>
-    <url>http://fisheye.jboss.com/qsearch/JBossOSGi</url>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/jbossas/projects/jboss-osgi/projects/bundles/webapp/tags/jboss-osgi-webapp-0.7.2.SP2</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/jbossas/projects/jboss-osgi/projects/bundles/webapp/tags/jboss-osgi-webapp-0.7.2.SP2</developerConnection>
+    <url>http://fisheye.jboss.com/qsearch/JBossOSGi/tags/jboss-osgi-webapp-0.7.2.SP2</url>
   </scm>
   
   <!-- Properties -->
   <properties>
-    <version.jboss.osgi.deployment>1.0.2-SNAPSHOT</version.jboss.osgi.deployment>
+    <version.jboss.osgi.deployment>1.0.2</version.jboss.osgi.deployment>
     <version.ops4j.pax.web>0.7.2</version.ops4j.pax.web>
     <version.osgi>4.2.0</version.osgi>
   </properties>
