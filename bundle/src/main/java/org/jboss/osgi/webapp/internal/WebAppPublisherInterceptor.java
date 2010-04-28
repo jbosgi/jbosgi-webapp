@@ -28,9 +28,12 @@ import org.jboss.osgi.deployment.interceptor.AbstractLifecycleInterceptor;
 import org.jboss.osgi.deployment.interceptor.InvocationContext;
 import org.jboss.osgi.deployment.interceptor.LifecycleInterceptor;
 import org.jboss.osgi.deployment.interceptor.LifecycleInterceptorException;
+import org.jboss.osgi.spi.util.BundleContextHelper;
 import org.ops4j.pax.web.extender.war.internal.WebAppPublisherExt;
 import org.ops4j.pax.web.extender.war.internal.model.WebApp;
 import org.osgi.framework.Bundle;
+import org.osgi.framework.ServiceReference;
+import org.osgi.service.http.HttpService;
 
 /**
  * The WebApp lifecycle interceptor.
@@ -58,6 +61,13 @@ public class WebAppPublisherInterceptor extends AbstractLifecycleInterceptor imp
       if (state == Bundle.STARTING)
       {
          log.debug("Publish WebApp metadata");
+         
+         // Gracefully wait 5000ms for the HttpService to become available
+         BundleContextHelper bcHelper = new BundleContextHelper(context.getSystemContext());
+         ServiceReference sref = bcHelper.getServiceReference(HttpService.class.getName(), 5000);
+         if (sref == null)
+            throw new IllegalStateException("HttpService not available");
+         
          WebApp webApp = context.getAttachment(WebApp.class);
          publisher.publish(webApp);
       }

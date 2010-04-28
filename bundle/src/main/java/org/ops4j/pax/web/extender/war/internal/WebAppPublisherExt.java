@@ -21,6 +21,7 @@
  */
 package org.ops4j.pax.web.extender.war.internal;
 
+import org.jboss.osgi.spi.util.BundleContextHelper;
 import org.ops4j.pax.web.extender.war.internal.model.WebApp;
 import org.ops4j.pax.web.service.WebContainer;
 import org.osgi.framework.BundleContext;
@@ -41,28 +42,12 @@ public class WebAppPublisherExt extends WebAppPublisher
    public void publish(BundleContext context, WebApp webapp)
    {
       // Gracefully wait 5000ms for the WebContainer to become available
-      int timeout = 25;
-      ServiceReference sref = null;
-      while (sref == null && 0 < timeout--)
-      {
-         sref = context.getServiceReference(WebContainer.class.getName());
-         if (sref == null)
-         {
-            try
-            {
-               Thread.sleep(200);
-            }
-            catch (InterruptedException ex)
-            {
-               // ignore
-            }
-         }
-      }
-      
+      ServiceReference sref = new BundleContextHelper(context).getServiceReference(WebContainer.class.getName(), 5000);
       if (sref == null)
          throw new IllegalStateException("WebContainer not available");
 
       // Publish the WebApp metadata
       super.publish(webapp);
    }
+
 }
