@@ -23,8 +23,8 @@ package org.jboss.osgi.webapp;
 
 //$Id: $
 
+import org.jboss.osgi.http.HttpServiceCapability;
 import org.jboss.osgi.spi.capability.Capability;
-import org.jboss.osgi.spi.capability.HttpServiceCapability;
 import org.jboss.osgi.testing.OSGiRuntime;
 
 /**
