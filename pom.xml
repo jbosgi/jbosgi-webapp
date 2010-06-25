@@ -27,23 +27,25 @@
   <parent>
     <groupId>org.jboss.osgi</groupId>
     <artifactId>jboss-osgi-parent</artifactId>
-    <version>1.0.6-SNAPSHOT</version>
+    <version>1.0.6</version>
   </parent>
-  
-  <!-- Modules -->
-  <modules>
-    <module>bundle</module>
-  </modules>
   
   <!-- Properties -->
   <properties>
     <version.jboss.osgi.deployment>1.0.2</version.jboss.osgi.deployment>
-    <version.jboss.osgi.http>1.0.0-SNAPSHOT</version.jboss.osgi.http>
-    <version.jboss.osgi.spi>1.0.7-SNAPSHOT</version.jboss.osgi.spi>
+    <version.jboss.osgi.http>1.0.0</version.jboss.osgi.http>
+    <version.jboss.osgi.spi>1.0.7</version.jboss.osgi.spi>
     <version.ops4j.pax.web>0.7.2</version.ops4j.pax.web>
     <version.osgi>4.2.0</version.osgi>
   </properties>
   
+  <!-- SCM -->
+  <scm>
+    <connection>scm:git:git://github.com/jbosgi/jbosgi-webapp.git</connection>
+    <developerConnection>scm:git:git@github.com:jbosgi/jbosgi-webapp.git</developerConnection>
+    <url>http://github.com/jbosgi/jbosgi-webapp</url>
+  </scm>
+
   <!-- Dependencies -->
   <dependencyManagement>
     <dependencies>
@@ -89,4 +91,9 @@
     </dependencies>
   </dependencyManagement>
 
+  <!-- Modules -->
+  <modules>
+    <module>bundle</module>
+  </modules>
+  
 </project>
