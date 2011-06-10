@@ -15,13 +15,13 @@
   <name>JBossOSGi WebApp Bundle</name>
 
   <groupId>org.jboss.osgi.webapp</groupId>
-  <artifactId>jboss-osgi-webapp</artifactId>
+  <artifactId>jbosgi-webapp</artifactId>
   <packaging>bundle</packaging>
 
   <!-- Parent -->
   <parent>
     <groupId>org.jboss.osgi.webapp</groupId>
-    <artifactId>jboss-osgi-webapp-parent</artifactId>
+    <artifactId>jbosgi-webapp-parent</artifactId>
     <version>1.0.2-SNAPSHOT</version>
   </parent>
 
@@ -29,15 +29,15 @@
   <dependencies>
     <dependency>
       <groupId>org.jboss.osgi.deployment</groupId>
-      <artifactId>jboss-osgi-deployment</artifactId>
+      <artifactId>jbosgi-deployment</artifactId>
     </dependency>
     <dependency>
       <groupId>org.jboss.osgi.http</groupId>
       <artifactId>jboss-osgi-http</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.jboss.osgi</groupId>
-      <artifactId>jboss-osgi-spi</artifactId>
+      <groupId>org.jboss.osgi.spi</groupId>
+      <artifactId>jbosgi-spi</artifactId>
     </dependency>
 
     <!-- PAX-Web -->
@@ -80,6 +80,7 @@
               org.ops4j.pax.web.extender.war.internal,
             </Private-Package>
             <Import-Package>
+              javax.security.auth.x500,
               javax.servlet,
               javax.servlet.http,
               javax.xml.parsers,
@@ -97,6 +98,9 @@
               org.osgi.util.tracker,
               org.w3c.dom,
               org.xml.sax,
+              
+              !javax.microedition.io, 
+              !org.ops4j.pax.web.service.spi
             </Import-Package>
             <Embed-Transitive>true</Embed-Transitive>
             <Embed-Dependency>

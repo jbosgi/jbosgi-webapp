@@ -37,7 +37,7 @@ import org.osgi.service.http.HttpService;
 
 /**
  * The WebApp lifecycle interceptor.
- * 
+ *
  * @author thomas.diesler@jboss.com
  * @since 20-Oct-2009
  */
@@ -45,7 +45,7 @@ public class WebAppPublisherInterceptor extends AbstractLifecycleInterceptor imp
 {
    // Provide logging
    private static final Logger log = Logger.getLogger(WebAppPublisherInterceptor.class);
-   
+
    private WebAppPublisherExt publisher;
 
    public WebAppPublisherInterceptor(WebAppPublisherExt publisher)
@@ -61,21 +61,33 @@ public class WebAppPublisherInterceptor extends AbstractLifecycleInterceptor imp
       if (state == Bundle.STARTING)
       {
          log.debug("Publish WebApp metadata");
-         
+
          // Gracefully wait 5000ms for the HttpService to become available
          BundleContextHelper bcHelper = new BundleContextHelper(context.getSystemContext());
          ServiceReference sref = bcHelper.getServiceReference(HttpService.class.getName(), 5000);
          if (sref == null)
             throw new IllegalStateException("HttpService not available");
-         
-         WebApp webApp = context.getAttachment(WebApp.class);
-         publisher.publish(webApp);
+
+         ClassLoader ctxLoader = Thread.currentThread().getContextClassLoader();
+         try {
+             WebApp webApp = context.getAttachment(WebApp.class);
+             publisher.publish(webApp);
+         } finally {
+             // [AS7-903] 3rd party code may leak TCCL
+             Thread.currentThread().setContextClassLoader(ctxLoader);
+         }
       }
       else if (state == Bundle.STOPPING)
       {
          log.debug("Unpublish WebApp metadata");
-         WebApp webApp = context.getAttachment(WebApp.class);
-         publisher.unpublish(webApp);
+         ClassLoader ctxLoader = Thread.currentThread().getContextClassLoader();
+         try {
+             WebApp webApp = context.getAttachment(WebApp.class);
+             publisher.unpublish(webApp);
+         } finally {
+             // [AS7-903] 3rd party code may leak TCCL
+             Thread.currentThread().setContextClassLoader(ctxLoader);
+         }
       }
    }
 }

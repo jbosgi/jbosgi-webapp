@@ -37,7 +37,7 @@ import org.osgi.framework.Bundle;
 
 /**
  * The WebApp lifecycle interceptor.
- * 
+ *
  * @author thomas.diesler@jboss.com
  * @since 20-Oct-2009
  */
@@ -45,7 +45,7 @@ public class WebXMLParserInterceptor extends AbstractLifecycleInterceptor implem
 {
    // Provide logging
    private static final Logger log = Logger.getLogger(WebXMLParserInterceptor.class);
-   
+
    public WebXMLParserInterceptor()
    {
       // Advertise output
@@ -81,7 +81,7 @@ public class WebXMLParserInterceptor extends AbstractLifecycleInterceptor implem
       DOMWebXmlParser parser = new DOMWebXmlParser();
       WebApp webApp = parser.parse(webXML.openStream());
 
-      // Associate the Bundle with the WebApp metadata 
+      // Associate the Bundle with the WebApp metadata
       Bundle bundle = context.getBundle();
       webApp.setBundle(bundle);
 
@@ -97,7 +97,8 @@ public class WebXMLParserInterceptor extends AbstractLifecycleInterceptor implem
          contextName = "";
       }
       webApp.setContextName(contextName);
-      
+      webApp.setRootPath("");
+
       return webApp;
    }
 }

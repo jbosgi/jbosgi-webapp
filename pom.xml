@@ -16,7 +16,7 @@
   <description>The JBossOSGi WebApp Support</description>
 
   <groupId>org.jboss.osgi.webapp</groupId>
-  <artifactId>jboss-osgi-webapp-parent</artifactId>
+  <artifactId>jbosgi-webapp-parent</artifactId>
   <packaging>pom</packaging>
 
   <version>1.0.2-SNAPSHOT</version>
@@ -30,10 +30,10 @@
   
   <!-- Properties -->
   <properties>
-    <version.jboss.osgi.deployment>1.0.4</version.jboss.osgi.deployment>
-    <version.jboss.osgi.http>1.0.1</version.jboss.osgi.http>
-    <version.jboss.osgi.spi>1.0.14</version.jboss.osgi.spi>
-    <version.ops4j.pax.web>0.7.2</version.ops4j.pax.web>
+    <version.jboss.osgi.deployment>1.0.10</version.jboss.osgi.deployment>
+    <version.jboss.osgi.http>1.0.3</version.jboss.osgi.http>
+    <version.jboss.osgi.spi>1.0.27</version.jboss.osgi.spi>
+    <version.ops4j.pax.web>1.0.3</version.ops4j.pax.web>
     <version.osgi>4.2.0</version.osgi>
   </properties>
   
@@ -49,7 +49,7 @@
     <dependencies>
       <dependency>
         <groupId>org.jboss.osgi.deployment</groupId>
-        <artifactId>jboss-osgi-deployment</artifactId>
+        <artifactId>jbosgi-deployment</artifactId>
         <version>${version.jboss.osgi.deployment}</version>
       </dependency>
       <dependency>
@@ -58,8 +58,8 @@
         <version>${version.jboss.osgi.http}</version>
       </dependency>
       <dependency>
-        <groupId>org.jboss.osgi</groupId>
-        <artifactId>jboss-osgi-spi</artifactId>
+        <groupId>org.jboss.osgi.spi</groupId>
+        <artifactId>jbosgi-spi</artifactId>
         <version>${version.jboss.osgi.spi}</version>
       </dependency>
       
