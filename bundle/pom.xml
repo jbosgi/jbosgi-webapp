@@ -30,24 +30,29 @@
     <dependency>
       <groupId>org.jboss.osgi.deployment</groupId>
       <artifactId>jbosgi-deployment</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.osgi.http</groupId>
-      <artifactId>jboss-osgi-http</artifactId>
+      <artifactId>jbosgi-http</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.osgi.spi</groupId>
       <artifactId>jbosgi-spi</artifactId>
+      <scope>provided</scope>
     </dependency>
 
     <!-- PAX-Web -->
     <dependency>
       <groupId>org.ops4j.pax.web</groupId>
       <artifactId>pax-web-api</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.ops4j.pax.web</groupId>
       <artifactId>pax-web-extender-war</artifactId>
+      <scope>provided</scope>
     </dependency>
 
     <!-- OSGi Dependencies -->
@@ -70,10 +75,10 @@
         <artifactId>maven-bundle-plugin</artifactId>
         <configuration>
           <instructions>
-            <Bundle-SymbolicName>${artifactId}</Bundle-SymbolicName>
+            <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
             <Bundle-Activator>org.jboss.osgi.webapp.internal.WebAppActivator</Bundle-Activator>
             <Export-Package>
-              org.jboss.osgi.webapp;version=${version}
+              org.jboss.osgi.webapp;version=${project.version}
             </Export-Package>
             <Private-Package>
               org.jboss.osgi.webapp.internal,

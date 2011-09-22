@@ -25,14 +25,14 @@
   <parent>
     <groupId>org.jboss.osgi</groupId>
     <artifactId>jboss-osgi-parent</artifactId>
-    <version>1.0.9</version>
+    <version>1.0.10</version>
   </parent>
   
   <!-- Properties -->
   <properties>
     <version.jboss.osgi.deployment>1.0.10</version.jboss.osgi.deployment>
-    <version.jboss.osgi.http>1.0.3</version.jboss.osgi.http>
-    <version.jboss.osgi.spi>1.0.27</version.jboss.osgi.spi>
+    <version.jboss.osgi.http>1.0.4</version.jboss.osgi.http>
+    <version.jboss.osgi.spi>1.0.28</version.jboss.osgi.spi>
     <version.ops4j.pax.web>1.0.3</version.ops4j.pax.web>
     <version.osgi>4.2.0</version.osgi>
   </properties>
@@ -54,7 +54,7 @@
       </dependency>
       <dependency>
         <groupId>org.jboss.osgi.http</groupId>
-        <artifactId>jboss-osgi-http</artifactId>
+        <artifactId>jbosgi-http</artifactId>
         <version>${version.jboss.osgi.http}</version>
       </dependency>
       <dependency>
