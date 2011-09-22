@@ -63,8 +63,8 @@ public class WebXMLParserInterceptor extends AbstractLifecycleInterceptor implem
             VirtualFile webXML = root.getChild("/WEB-INF/web.xml");
             if (webXML != null)
             {
-               log.debug("Create and attach WebApp metadata");
                webApp = createWebAppMetadata(context, webXML);
+               log.debugf("Attach web metadata: %s", webApp);
                context.addAttachment(WebApp.class, webApp);
             }
          }
@@ -85,9 +85,9 @@ public class WebXMLParserInterceptor extends AbstractLifecycleInterceptor implem
       Bundle bundle = context.getBundle();
       webApp.setBundle(bundle);
 
-      // Set the context name as first looking for a manifest entry named Webapp-Context
+      // Set the context name as first looking for a manifest entry named Web-ContextPath
       // if not set use bundle symbolic name
-      String contextName = (String)bundle.getHeaders().get("Webapp-Context");
+      String contextName = (String)bundle.getHeaders().get("Web-ContextPath");
       if (contextName == null)
       {
          contextName = bundle.getSymbolicName();
