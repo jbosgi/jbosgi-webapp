@@ -85,24 +85,33 @@
               org.ops4j.pax.web.extender.war.internal,
             </Private-Package>
             <Import-Package>
+              <!-- system -->
               javax.security.auth.x500,
-              javax.servlet,
-              javax.servlet.http,
               javax.xml.parsers,
+              org.w3c.dom,
+              org.xml.sax,
 
-              org.apache.commons.logging;version="[1.1,1.2)",
+              <!-- javax.servlet -->
+              javax.servlet;version="[2.5,4.0)",
+              javax.servlet.http;version="[2.5,4.0)",
+              
+              <!-- logging -->
               org.jboss.logging;version="[3.0,4.0)",
+              org.apache.commons.logging;version="[1.1,1.2)";resolution:=optional,
+              
+              <!-- jboss-osgi --> 
               org.jboss.osgi.deployment*;version="[1.0,2.0)",
               org.jboss.osgi.http;version="[1.0,2.0)",
               org.jboss.osgi.spi*;version="[1.0,2.0)",
               org.jboss.osgi.vfs;version="[1.0,2.0)",
 
+              <!-- pax-web -->              
               org.ops4j.pax.web.service,
+
+              <!-- osgi -->              
               org.osgi.service.http,
               org.osgi.framework,
               org.osgi.util.tracker,
-              org.w3c.dom,
-              org.xml.sax,
               
               !javax.microedition.io, 
               !org.ops4j.pax.web.service.spi
